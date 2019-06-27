@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+        mapboxToken: 'pk.eyJ1IjoiZG9uYXRsdWZmeSIsImEiOiJjaml1NXZlZTAyZjZxM3FwODFyN29pMHl6In0.o7Zmhzbx3dNoW2Rb9g6qSw',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -150,6 +150,7 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const name = document.createElement('p');
   name.innerHTML = review.name;
+  name.style.fontWeight = 'bold'
   li.appendChild(name);
 
   const date = document.createElement('p');
@@ -157,7 +158,20 @@ createReviewHTML = (review) => {
   li.appendChild(date);
 
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  // rating.innerHTML = `Rating: ${review.rating}`;
+  // make star icon instde of number
+  let numOfRating = Number(review.rating);
+    for (let i = 0; i < numOfRating; i++) {
+      const span = document.createElement('span');
+      span.className = 'fa fa-star checked';
+      rating.appendChild(span);
+    }
+    let noRating = 5 - numOfRating;
+    for (let i = 0; i < noRating; i++) {
+      const span = document.createElement('span');
+      span.className = 'fa fa-star';
+      rating.appendChild(span);
+    }
   li.appendChild(rating);
 
   const comments = document.createElement('p');

@@ -18,7 +18,7 @@ ul, li {
 	color: #333;
 }
 a {
-	color: orange;
+  color: #252831;
 	text-decoration: none;
 }
 a:hover, a:focus {
@@ -38,6 +38,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 #footer {
   background-color: #444;
@@ -57,6 +59,7 @@ nav {
 }
 nav h1 {
   margin: auto;
+  padding: 20px;
 }
 nav h1 a {
   color: #fff;
@@ -102,6 +105,7 @@ nav h1 a {
   height: 400px;
   width: 100%;
   background-color: #ccc;
+  z-index: 1;
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
@@ -109,6 +113,11 @@ nav h1 a {
   height: 50px;
   background-color: #3397DB;
   align-items: center;
+  text-align: center;
+  display: table;
+  padding: 20px;
+  box-sizing: border-box;
+
 }
 .filter-options h2 {
   color: white;
@@ -136,24 +145,29 @@ nav h1 a {
   margin: 0;
   padding: 30px 15px 60px;
   text-align: center;
+  display: flex;
+ flex-wrap: wrap;
 }
 #restaurants-list li {
   background-color: #fff;
   border: 2px solid #ccc;
   font-family: Arial,sans-serif;
-  margin: 15px;
+  margin: auto;
+  margin-bottom: 1em;
   min-height: 380px;
   padding: 0 30px 25px;
   text-align: left;
   width: 270px;
+  border-radius: 10px;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;
-  margin: 0;
+  margin-top: 15px;
   max-width: 100%;
   min-height: 248px;
   min-width: 100%;
+  border-radius: 1em;
 }
 #restaurants-list li h1 {
   color: #f18200;
@@ -180,6 +194,7 @@ nav h1 a {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  border-radius: 12px;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -205,7 +220,7 @@ nav h1 a {
 .inside #footer {
   bottom: 0;
   position: absolute;
-  width: 50%;
+  width: 100%;
 }
 #restaurant-name {
   color: #f18200;
@@ -258,18 +273,139 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
-  width: 85%;
+  width: 100%;
+  border-radius: 0 15px 30px 30px;
 }
 #reviews-list li p {
-  margin: 0 0 10px;
+  margin: 10px 10px 10px;
+  display: inline-block;
 }
 #restaurant-hours td {
   color: #666;
+  margin: auto;
+ padding: 5px;
+ border: 5px;
+ background: #ccc;
+ border-radius: 3px;
+}
+
+/* ====================== extra classes  ====================== */
+#reviews-list li .header {
+  color: #fff;
+  background-color: #252831;
+  /* padding: 5px; */
+}
+#reviews-list li .name {
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+  margin-left: 0.5em;
+  padding: 5px;
+  font-weight: bold;
+}
+#reviews-list li .date {
+  color: #ccc;
+  float: right;
+  margin-right: 1em;
+  padding: 5px 0 5px;
+  padding-left: 0;
+  margin-top: 1em;
+}
+#reviews-list li .rating {
+  padding: 2px;
+  display: block;
+  background-color: #FF8C00;
+  color: #fff;
+  width: 80px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 10px;
+}
+#reviews-list li .comments {
+  margin-left: 1em;
+  padding: 10px;
+}
+.getReviews,
+.getWorktime {
+  color: #f3f3f3;
+}
+.checked {
+  color: orange;
+}
+/* ====================== Media Queries ====================== */
+
+@media screen and (max-width: 1023px) {
+  #restaurant-hours {
+    width: 90%;
+  }
+  #restaurant-hours td {
+    font-weight: bold;
+  }
+  #reviews-list li .comments {
+    margin-left: 1em;
+    padding: 0.5em;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /* #restaurants-list li:hover {
+    position: relative;
+     top: -5px;
+     border-color: orange;
+  } */
+  #restaurant-name {
+    width: 100%;
+  }
+  #restaurant-img {
+    height: 25%;
+    width: 45%;
+    order: 1;
+    margin: 1em;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  #restaurant-cuisine {
+    width: 45%;
+    margin: 1em;
+    margin-top: 5px;
+    margin-bottom: 0;
+    order: 3;
+    margin-left: 0;
+  }
+  #restaurant-address{
+    order: 4;
+    width: 100%;
+    margin: 1em;
+    margin-top: 5px;
+
+  }
+  #restaurant-hours {
+    width: 45%;
+    order: 2;
+    margin: 1em;
+  }
+  #restaurant-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #restaurants-list a:hover {
+      background-color: #FF8C00;
+      color: #fff;
+      animation-name: animation_anchor;
+      animation-duration: 0.5s;
+  }
+
+  /* Animation for anchor */
+  @keyframes animation_anchor {
+      50% {
+          transform: scale(1.25);
+      }
+  }
 }
