@@ -22,9 +22,9 @@ const UrlsToCache = [
   'img/10.jpg'
 ];
 
-self.addEventListener('install', function (event) {
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
+    caches.open(CACHE_NAME).then( (cache) => {
       return cache.addAll(UrlsToCache);
     }).catch(function (err) {
       console.log('Error',err);
@@ -32,9 +32,9 @@ self.addEventListener('install', function (event) {
   );
 });
 
-self.addEventListener('fetch', function (event) {
+self.addEventListener('fetch', (event) => {
     event.respondWith(
-      caches.match(event.request).then(function (response) {
+      caches.match(event.request).then( (response) => {
         if(response) return response;
         return fetch(event.request);
       })

@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function (event) {
+document.addEventListener('DOMContentLoaded', (event) => {
     if(navigator.serviceWorker){
-      navigator.serviceWorker.register('/sw.js').then(function (registration) {
+      navigator.serviceWorker.register('/sw.js').then( (registration) => {
         console.log('Registration worked', registration);
       })
-      .catch(function (err) {
+      .catch( (err) => {
         console.log('Registration failed', err);
       });
     }
