@@ -347,9 +347,37 @@ nav h1 a {
 }
 /* ====================== Media Queries ====================== */
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 700px) {
+  header {
+    position: unset;
+    top: auto;
+    width: auto;
+    z-index: auto;
+  }
+  #restaurant-name {
+    font-size: 14pt;
+  }
+  #restaurant-container {
+    padding-left: 15px;
+  }
+  #restaurant-address {
+    font-size: 10pt;
+    text-align: left;
+  }
+  #restaurant-hours {
+    border-radius: 18px;
+  }
+}
+@media screen and (min-width: 701px ) and (max-width: 1023px) {
+  
+  #footer {
+    bottom: auto;
+    position: unset;
+    width: auto;
+  }
   #restaurant-hours {
     width: 90%;
+    margin-left: -10px;
   }
   #restaurant-hours td {
     font-weight: bold;
@@ -357,6 +385,9 @@ nav h1 a {
   #reviews-list li .comments {
     margin-left: 1em;
     padding: 0.5em;
+  }
+  #restaurant-img {
+    width: 100%;
   }
 }
 
@@ -366,6 +397,7 @@ nav h1 a {
      top: -5px;
      border-color: orange;
   } */
+  
   #restaurant-name {
     width: 100%;
   }
