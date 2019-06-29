@@ -60,7 +60,7 @@ nav {
 }
 nav h1 {
   margin: auto;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 nav h1 a {
   color: #fff;
@@ -305,6 +305,9 @@ nav h1 a {
 }
 
 /* ====================== extra classes  ====================== */
+.skipMap {
+  
+}
 #reviews-list li .header {
   color: #fff;
   background-color: #252831;
@@ -373,6 +376,7 @@ nav h1 a {
   #restaurant-container, #reviews-container {
     width: 100%;
     margin-top: 25em;
+    padding-top: 70px;
   }
   #breadcrumb {
     width: 100%;
@@ -399,8 +403,8 @@ nav h1 a {
     padding-left: 10px;
   }
   #restaurant-hours {
+    margin: auto;
     width: 90%;
-    margin-left: 20px;
   }
   #restaurant-hours td {
     font-weight: bold;
@@ -441,7 +445,7 @@ nav h1 a {
   }
   #restaurant-hours {
     width: 90%;
-    margin-top: 1em;
+    margin: auto;
   }
   #restaurant-container {
     display: flex;

@@ -1,7 +1,7 @@
-const CACHE_NAME = 'restaurant-cache-v1';
+const CACHE_NAME = 'restaurant-cache-v2';
 
 const UrlsToCache = [
-  './',
+  '/',
   '/sw-reg.js',
   'index.html',
   'restaurant.html',
@@ -22,19 +22,17 @@ const UrlsToCache = [
   'img/10.jpg'
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', function(event) {
   event.waitUntil(
-    caches.open(CACHE_NAME).then( (cache) => {
+    caches.open(CACHE_NAME).then( function(cache) {
       return cache.addAll(UrlsToCache);
-    }).catch(function (err) {
-      console.log('Error',err);
     })
   );
 });
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', function(event) {
     event.respondWith(
-      caches.match(event.request).then( (response) => {
+      caches.match(event.request).then( function(response) {
         if(response) return response;
         return fetch(event.request);
       })
@@ -43,6 +41,16 @@ self.addEventListener('fetch', (event) => {
 
 self.addEventListener('activate', function (event) {
   event.waitUntil(
-    caches.delete(CACHE_NAME)
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.filter(function(cacheName) {
+          return cacheName.startsWith('restaurant-cache-v') &&
+                 cacheName != staticCacheName;
+        }).map(function(cacheName) {
+          return caches.delete(cacheName);
+        })
+      );
+    })
   );  
 });
+//
