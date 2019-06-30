@@ -33,7 +33,11 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches.match(event.request).then( function(response) {
-        if(response) return response;
+        if(response){
+          console.log('%c response ', 'background: #222; color: #bada55');
+          return response;
+        }
+        console.log('%c fetch ', 'background: #00a; color: #bada55');
         return fetch(event.request);
       })
     );
